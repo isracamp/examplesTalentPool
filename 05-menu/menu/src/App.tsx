@@ -10,7 +10,7 @@ const categories = [
 ];
 
 function App() {
-  const [menuItems, setMenuItems] = useState<MenuModel[]>([]);
+  const [menuItems, setMenuItems] = useState<MenuModel[]>(getMenuService());
   const filterItems = (category: string): void | MenuModel[] => {
     if (category === Categories.all) {
       return setMenuItems(getMenuService());
