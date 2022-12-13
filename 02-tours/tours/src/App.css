@@ -1,4 +1,6 @@
-
+.App {
+  text-align: center;
+}
 
 .App-logo {
   height: 40vmin;
@@ -10,12 +12,7 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
- *{
-  --clr-pink: #f28ab2;
- }
-body {
- background-color: var(--clr-pink);
-}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
