@@ -8,7 +8,7 @@ function App() {
   const [tours, setTours] = useState<Tour[]>([
     { id: '', image: '', info: '', name: '', price: '' },
   ]);
-  const fetchTours = async () => {
+  const fetchTours = async (): Promise<void> => {
     try {
       const responseTours = await getTourService();
       setTours(responseTours);
@@ -22,7 +22,7 @@ function App() {
     setIsLoading(true);
     fetchTours();
   }, []);
-  const removeTour = (id: string) => {
+  const removeTour = (id: string): void => {
     const newTours = tours.filter((tour) => tour.id !== id);
     setTours(newTours);
   };
@@ -58,7 +58,7 @@ function App() {
                     <h4 className='tour-price'>${tour.price}</h4>
                   </div>
                   <p>
-                    {readMore ? tour.info : `${tour.info.substring(0, 200)}...`}
+                    {readMore ? tour.info : `${tour.info.substring(0, 300)}...`}
                     <button onClick={() => setReadMore(!readMore)}>
                       {readMore ? 'show less' : '  read more'}
                     </button>
