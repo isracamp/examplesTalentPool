@@ -1,11 +1,6 @@
 import { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
-
 import './App.css';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import HightLighter from './components/hightLighter/HightLighter';
-
 function App() {
   const [markdown, setMarkdown] = useState<string>('');
   return (
