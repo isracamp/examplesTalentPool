@@ -1,0 +1,57 @@
+import { FC } from 'react';
+import useNewsStore, {
+  getGlobalLoader,
+  getGlobalHits,
+  setRemoveGlobalStory,
+} from '../../../../stores/newsStore';
+
+const Stories: FC = () => {
+  const isLoading = useNewsStore(getGlobalLoader);
+  const hits = useNewsStore(getGlobalHits);
+  const removeStory = useNewsStore(setRemoveGlobalStory);
+
+  if (isLoading) {
+    return <div className='loading'></div>;
+  }
+  return (
+    <>
+      {isLoading ? (
+        <div className='loading'></div>
+      ) : (
+        <section className='stories'>
+          {hits.map((story: any) => {
+            const { objectID, title, num_comments, url, points, author } =
+              story;
+            return (
+              <article key={objectID} className='story'>
+                <h4 className='title'>{title}</h4>
+                <p className='info'>
+                  {points} points by <span>{author} | </span> {num_comments}{' '}
+                  comments
+                </p>
+                <div>
+                  <a
+                    href={url}
+                    className='read-link'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                  >
+                    read more
+                  </a>
+                  <button
+                    className='remove-btn'
+                    onClick={() => removeStory(objectID)}
+                  >
+                    remove
+                  </button>
+                </div>
+              </article>
+            );
+          })}
+        </section>
+      )}
+    </>
+  );
+};
+
+export default Stories;
