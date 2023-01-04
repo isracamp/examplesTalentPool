@@ -15,7 +15,7 @@ const Movies: FC = () => {
   if (isLoading) {
     return <div className='loading'></div>;
   }
-  console.log({ movies });
+
   return (
     <section className='movies'>
       {typeof movies !== 'undefined'
