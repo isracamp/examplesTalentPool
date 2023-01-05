@@ -37,9 +37,9 @@ function App() {
 
     const tempIndex = Math.floor(Math.random() * 4);
     if (tempIndex === 3) {
-      answers.push(question?.correct_answer);
+      answers = answers.concat(question?.correct_answer);
     } else {
-      answers.push(answers[tempIndex]);
+      answers = answers.concat(answers[tempIndex]);
       answers[tempIndex] = question?.correct_answer;
     }
   }
@@ -75,7 +75,6 @@ function App() {
               <h2>{question?.question}</h2>
               <div className='btn-container'>
                 {answers.map((answer: any, index: number) => {
-                  console.log(answer);
                   return (
                     <button
                       key={index}
