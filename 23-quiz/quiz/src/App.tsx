@@ -55,7 +55,6 @@ function App() {
   };
   const seeResults = () => {
     if (index > questions.length - 1) {
-      console.log('entro');
       handleModal('DEMO_MODAL');
     }
   };
