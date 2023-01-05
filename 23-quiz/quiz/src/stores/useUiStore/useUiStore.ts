@@ -35,8 +35,6 @@ const uiStore = (set: SetState<State>): State => ({
       displayModal: false,
       isLoading: false,
       isWaiting: true,
-      openModal: () => null,
-      closeModal: () => null,
     })),
 });
 const useUiStore =

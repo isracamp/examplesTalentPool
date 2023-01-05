@@ -17,6 +17,7 @@ import Modal from './components/modals/modal/Modal';
 import SetupForm from './components/setUpForm/SetUpForm';
 import Loader from './components/shared/loader/Loader';
 import { getGlobalCorrectQuestion } from './stores/useQuizStore/selectors';
+import { useMemo } from 'react';
 
 function App() {
   const correct = useQuizStore(getGlobalCorrectQuestion);
@@ -31,30 +32,35 @@ function App() {
   const setIndex = useQuizStore(setGlobalIndex);
 
   const question = questions.length > 0 && questions[index];
-  let answers: any = [];
-  if (question) {
-    answers = [...question.incorrect_answers];
 
-    const tempIndex = Math.floor(Math.random() * 4);
-    if (tempIndex === 3) {
-      answers = answers.concat(question?.correct_answer);
-    } else {
-      answers = answers.concat(answers[tempIndex]);
-      answers[tempIndex] = question?.correct_answer;
+  const answersM = useMemo(() => {
+    let answers: any = [];
+    if (question) {
+      answers = [...question.incorrect_answers];
+
+      const tempIndex = Math.floor(Math.random() * 4);
+      if (tempIndex === 3) {
+        answers.push(question?.correct_answer);
+      } else {
+        answers.push(answers[tempIndex]);
+        answers[tempIndex] = question?.correct_answer;
+      }
     }
-  }
+    return answers;
+  }, [question]);
+
   const handleModal = (modal: Modals) => {
     setModal(modal);
     openModal();
   };
   const seeResults = () => {
-    setIndex();
-
     if (index > questions.length - 1) {
+      console.log('entro');
       handleModal('DEMO_MODAL');
     }
   };
   const checkAnswer = (value: any) => {
+    setIndex();
     if (value) {
       setCorrect();
     }
@@ -74,7 +80,7 @@ function App() {
             <article className='container'>
               <h2>{question?.question}</h2>
               <div className='btn-container'>
-                {answers.map((answer: any, index: number) => {
+                {answersM.map((answer: any, index: number) => {
                   return (
                     <button
                       key={index}
@@ -88,11 +94,11 @@ function App() {
                 })}
               </div>
             </article>
-            {questions.length === index ? (
-              <button className='next-question' onClick={seeResults}>
-                See results
-              </button>
-            ) : null}
+            {/* {questions.length === index ? ( */}
+            <button className='next-question' onClick={seeResults}>
+              See results
+            </button>
+            {/* ) : null} */}
 
             <Modal>{FactoryModal(getModal)}</Modal>
           </section>
