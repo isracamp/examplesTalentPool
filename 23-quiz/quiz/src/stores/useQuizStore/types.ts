@@ -1,0 +1,15 @@
+type QuizType = {
+  index: number;
+  questions: Array<any>;
+  correct: number;
+  error: boolean;
+  quiz: any;
+  setIndex: () => void;
+  setQuestions: (questions: Array<any>) => void;
+  setCorrect: () => void;
+  setError: (error: boolean) => void;
+  setQuiz: (quiz: any) => void;
+  setCleanStore: () => void;
+};
+
+export type State = QuizType;
