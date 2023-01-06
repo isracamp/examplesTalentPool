@@ -60,7 +60,7 @@ function App() {
   };
   const seeResults = () => {
     if (index > questions.length - 1) {
-      handleModal('DEMO_MODAL');
+      handleModal('FINAL_QUIZ');
     }
   };
   const checkAnswer = (

@@ -7,7 +7,7 @@ type FactoryModals = {
 
 export const FactoryModal = (type: string): ReactNode => {
   const modalComponent: FactoryModals = {
-    DEMO_MODAL: () => <DemoModal />,
+    FINAL_QUIZ: () => <DemoModal />,
   };
 
   if (typeof modalComponent[type] !== 'function') {

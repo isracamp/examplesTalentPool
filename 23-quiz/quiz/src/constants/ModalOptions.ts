@@ -1,1 +1,1 @@
-export const DEMO_MODAL = 'DEMO_MODAL';
+export const FINAL_QUIZ = 'FINAL_QUIZ';
