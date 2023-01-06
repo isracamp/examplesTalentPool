@@ -4,6 +4,10 @@ type QuizType = {
   correct: number;
   error: boolean;
   quiz: any;
+  userAnswers: Array<string>;
+  correctAnswers: Array<string>;
+  setCorrectAnswers: (answer: any) => void;
+  setUserAnswers: (answer: any) => void;
   setIndex: () => void;
   setQuestions: (questions: Array<any>) => void;
   setCorrect: () => void;

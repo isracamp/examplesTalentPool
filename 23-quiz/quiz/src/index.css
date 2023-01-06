@@ -248,6 +248,10 @@ Form
   color: var(--clr-red-dark);
   text-transform: capitalize;
 }
+.success {
+  color: var(--clr-green-dark);
+  text-transform: capitalize;
+}
 .submit-btn {
   width: 100%;
   margin-top: 3rem;
@@ -309,3 +313,21 @@ Loading
 .close-btn {
   margin-right: auto;
 }
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+.list-numbered {
+  list-style: none;
+
+}
+
+.list-numbered > li {
+  border: #222 1px solid;
+  margin-bottom: .3rem;
+}
+

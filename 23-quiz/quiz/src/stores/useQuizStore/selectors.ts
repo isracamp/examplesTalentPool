@@ -5,6 +5,9 @@ export const getGlobalQuestions = (state: State): Array<any> => state.questions;
 export const getGlobalCorrectQuestion = (state: State): number => state.correct;
 export const getGlobalError = (state: State): boolean => state.error;
 export const getGlobalQuiz = (state: State): any => state.quiz;
+export const getGlobalUserAnswer = (state: State): any => state.userAnswers;
+export const getGlobalCorrectAnswers = (state: State): any =>
+  state.correctAnswers;
 // quiz selectors set
 export const setGlobalIndex = (state: State): (() => void) => state.setIndex;
 export const setGlobalQuestions = (
@@ -19,3 +22,10 @@ export const setGlobalQuiz = (state: State): ((quiz: any) => void) =>
 
 export const setGlobalCleanStore = (state: State): (() => void) =>
   state.setCleanStore;
+
+export const setGlobalUserAnswers = (state: State): ((answer: any) => void) =>
+  state.setUserAnswers;
+
+export const setGlobalCorrectAnswers = (
+  state: State
+): ((answer: any) => void) => state.setCorrectAnswers;

@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import useUiStore, {
   getModalOpen,
   setDisplayedModal,
@@ -10,17 +11,21 @@ import useQuizStore, {
   getGlobalIndex,
   setGlobalCorrect,
   getGlobalQuestions,
+  setGlobalUserAnswers,
+  setGlobalCorrectAnswers,
+  getGlobalCorrectQuestion,
 } from './stores/useQuizStore';
 import { Modals } from './models/ModalModel';
 import { FactoryModal } from './components/modals/ModalFactory';
 import Modal from './components/modals/modal/Modal';
 import SetupForm from './components/setUpForm/SetUpForm';
 import Loader from './components/shared/loader/Loader';
-import { getGlobalCorrectQuestion } from './stores/useQuizStore/selectors';
-import { useMemo } from 'react';
 
 function App() {
   const correct = useQuizStore(getGlobalCorrectQuestion);
+  const setUserGlobalAnswers = useQuizStore(setGlobalUserAnswers);
+  const setGlobalCorrectAnswer = useQuizStore(setGlobalCorrectAnswers);
+
   const setCorrect = useQuizStore(setGlobalCorrect);
   const questions = useQuizStore(getGlobalQuestions);
   const openModal = useUiStore(getModalOpen);
@@ -58,7 +63,13 @@ function App() {
       handleModal('DEMO_MODAL');
     }
   };
-  const checkAnswer = (value: any) => {
+  const checkAnswer = (
+    value: boolean,
+    userAnswers: string,
+    correctAnswer: string
+  ) => {
+    setUserGlobalAnswers(userAnswers);
+    setGlobalCorrectAnswer(correctAnswer);
     setIndex();
     if (value) {
       setCorrect();
@@ -85,7 +96,11 @@ function App() {
                       key={index}
                       className='answer-btn'
                       onClick={() =>
-                        checkAnswer(question.correct_answer === answer)
+                        checkAnswer(
+                          question.correct_answer === answer,
+                          answer,
+                          question.correct_answer
+                        )
                       }
                       dangerouslySetInnerHTML={{ __html: answer }}
                     />

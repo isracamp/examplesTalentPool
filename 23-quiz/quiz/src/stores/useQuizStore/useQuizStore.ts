@@ -6,6 +6,8 @@ import type { State } from './types';
 const initialQuizState = {
   index: 0,
   questions: [],
+  userAnswers: [],
+  correctAnswers: [],
   correct: 0,
   error: false,
   quiz: { amount: 10, category: 'sports', difficulty: 'easy' },
@@ -20,6 +22,16 @@ const uiStore = (set: SetState<State>): State => ({
   setCorrect: () => set((state) => ({ correct: state.correct + 1 })),
   setError: (error: boolean) => set(() => ({ error })),
   setQuiz: (quiz: any) => set(() => ({ quiz })),
+  setUserAnswers: (answers: any) =>
+    set((state) => ({
+      ...state,
+      userAnswers: [...state.userAnswers, answers],
+    })),
+  setCorrectAnswers: (answer: any) =>
+    set((state) => ({
+      ...state,
+      correctAnswers: [...state.correctAnswers, answer],
+    })),
   setCleanStore: () =>
     set(() => ({
       index: 0,
@@ -27,6 +39,8 @@ const uiStore = (set: SetState<State>): State => ({
       correct: 0,
       error: false,
       quiz: { amount: 10, category: 'sports', difficulty: 'easy' },
+      userAnswers: [],
+      correctAnswers: [],
     })),
 });
 const useQuizStore =
