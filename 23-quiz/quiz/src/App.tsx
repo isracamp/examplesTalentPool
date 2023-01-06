@@ -108,11 +108,11 @@ function App() {
                 })}
               </div>
             </article>
-            {/* {questions.length === index ? ( */}
-            <button className='next-question' onClick={seeResults}>
-              See results
-            </button>
-            {/* ) : null} */}
+            {questions.length === index ? (
+              <button className='next-question' onClick={seeResults}>
+                See results
+              </button>
+            ) : null}
 
             <Modal>{FactoryModal(getModal)}</Modal>
           </section>
