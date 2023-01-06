@@ -85,7 +85,7 @@ function App() {
         <main>
           <section className='quiz'>
             <p className='correct-answers'>
-              correct answers :{correct}/{index}
+              questions :{index}/{questions.length}
             </p>
             <article className='container'>
               <h2>{question?.question}</h2>

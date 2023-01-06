@@ -327,6 +327,7 @@ Loading
 }
 
 .list-numbered > li {
+  
   border: #222 1px solid;
   margin-bottom: .3rem;
 }
